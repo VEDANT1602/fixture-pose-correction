@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "Please use this citation when referring to the research software."
+type: software
+title: "When two fixture markers justify a rotational correction"
+authors:
+  - family-names: Thaker
+    given-names: Vedant
+repository-code: "https://github.com/VEDANT1602/fixture-pose-correction"
+abstract: "When two fixture markers supply enough information to correct rotation in a simulated assembly."
