@@ -5,3 +5,7 @@ The research question and author-supplied disclosures are attributed to Vedant T
 All 88 physical stops had detectable markers and the 56 calibration stops were disjoint from the 32 evaluation stops. The physical reference for each test heading uses its recorded robot pose, stored board geometry and training-only parameters. Simulated estimators use independent calibration and test random streams.
 
 The supplement README identifies the inputs and computations needed to inspect the numerical results. Earlier public material is retained at https://github.com/VEDANT1602/fixture-pose-correction/tree/d5fd89da341d942b67ea9f16422e6d1b78f1c0ff .
+
+## Current work
+
+Vedant Thaker is the sole author and set the research question. OpenAI Codex assisted with processing the public robot-pose benchmark, implementing the calibration refits, optical reference and filter comparisons, and drafting the results.

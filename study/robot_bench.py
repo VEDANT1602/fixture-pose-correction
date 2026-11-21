@@ -12,7 +12,7 @@ def angle(v):
     return np.arctan2(v[...,1],v[...,0])
 def wrap(x):
     return (x+np.pi/2)%np.pi-np.pi/2
-def run(dataset):
+def load_dataset(dataset):
     cv.setNumThreads(1)
     geometry=np.array([[x,y,0] for y in range(6) for x in range(8)],dtype=np.float32)*28.5
     ids=[];grids=[]
@@ -24,10 +24,12 @@ def run(dataset):
         if g[2,-1,1]<g[2,0,1]:g=g[::-1,::-1]
         grids.append(g.copy());ids.append(i)
     ids=np.asarray(ids);grids=np.array(grids)
-    train=~np.isin(ids//8,[2,5,8,10]);test=~train
-    flat=grids.reshape(len(ids),-1,1,2)
-    rms,K,d,_,_=cv.calibrateCamera([geometry]*int(train.sum()),list(flat[train]),(640,480),None,None,flags=cv.CALIB_FIX_K3)
     robot=np.loadtxt(dataset/'robot_cali.txt',skiprows=1).reshape(-1,4,4)[ids]
+    return ids, geometry, grids, robot
+
+def fit_geometry(geometry, grids, robot, train):
+    flat=grids.reshape(len(grids),-1,1,2)
+    rms,K,d,_,_=cv.calibrateCamera([geometry]*int(train.sum()),list(flat[train]),(640,480),None,None,flags=cv.CALIB_FIX_K3)
     vectors=[];offsets=[]
     for view in flat[train]:
         ok,v,t=cv.solvePnP(geometry,view,K,d);assert ok
@@ -58,6 +60,12 @@ def run(dataset):
         res=least_squares(pixel,x0,x_scale='jac',max_nfev=100)
         candidates.append((res.cost,inv,project(res.x,rr,t)))
     cost,inv,proj=min(candidates,key=lambda z:z[0]);proj=proj.reshape(-1,6,8,2)
+    return K, d, rms, inv, proj
+
+def run(dataset):
+    ids, geometry, grids, robot=load_dataset(dataset)
+    train=~np.isin(ids//8,[2,5,8,10]);test=~train
+    K,d,rms,inv,proj=fit_geometry(geometry,grids,robot,train)
     geomerr=np.linalg.norm(proj-grids,axis=3)
     metrics=[];frames=[]
     for length,left,right in [(1,3,4),(3,2,5),(7,0,7)]:

@@ -15,3 +15,9 @@ The physical angle is the axial direction of the projected line between two iden
 The simulated primary endpoint is radial error at the rightmost 36 mm target. The reported standard error uses 120 independent sequence-level means. Tracking error, deadlines, stage times and retry noise enter only the simulated completion endpoint. Physical runs do not measure those quantities.
 
 The source data are referenced at the original host, and all distributed CSVs are outputs of the supplied programs. No third-party camera images, robot input matrices or library binaries are bundled.
+
+## Reference sensitivity and the static comparator
+
+Run `python reference_sensitivity.py /path/to/DS1` after generating robot_bench_errors.csv. Seven 48-stop calibrations omit one contiguous block at a time from the 56 fitting stops. Their predictions are all compared on the original 32 held-out stops. The second optical estimate uses OpenCV PnP on all 40 corners outside the tested row; its intrinsics come only from the original training stops. The three target pairs never enter that test-view fit. Read reference_summary.csv for means and per-fit ranges. Repeated predictions at one stop and seven overlapping fits are dependent. Both reference routes share potential systematic errors. Neither is a traceable measurement of absolute yaw.
+
+Run `python strong_comparator.py` to regenerate the comparison of the tracker with static shrinkage from the original 120 paired simulations per regime. The CSV reports static error minus tracker error, in millimetres, and the standard error over simulated sequence pairs.
