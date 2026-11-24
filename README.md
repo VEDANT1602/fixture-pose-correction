@@ -1,11 +1,9 @@
 # Marker spacing and temporal smoothing in two-point fixture heading estimates
 
-Research working paper by Vedant Thaker, Independent Researcher, Jeffersonville, Indiana, USA.
+Robot-camera measurement report by Vedant Thaker, Independent Researcher, Jeffersonville, Indiana, USA. Revised November 24, 2026.
 
-**Research period (author-reported)** · September 19–October 1, 2026 &nbsp; | &nbsp; **Manuscript revised** · November 21, 2026
-
-A camera can estimate fixture heading from two marks, but the available robot reference also depends on the camera calibration. At 32 held-out stops of one robot, widening the pair from 28.5 to 85.5 mm reduced mean absolute apparent-heading disagreement from 0.377° to 0.140°. Widening it again to 199.5 mm gave 0.111°. Two checks put those gains in context. Removing a training block and refitting the calibration changed the reference heading by 0.026° on average. An optical reference fitted using 40 other board corners differed from the robot reference by 0.074°. Both references showed the large short-to-medium spacing benefit. Their disagreement and the diminishing gain at the longest tested span limit claims about very small filter effects or wider fixtures.
+The apparent heading of a checkerboard row can be estimated from either two adjacent corners or a wider pair in the same image. On a Denso robot with a Sony camera, extending the span from 28.5 to 85.5 mm reduced mean absolute disagreement with a robot-pose reference from 0.377° to 0.140°. The wider pair improved on the shorter one at 25 of 32 held-out stops. An optical reference fitted to the other board rows favored the wider pair at 26 stops. Extending the span to 199.5 mm yielded a smaller mean gain, about 0.03° against either reference. At 28.5 mm, changing references reversed the ranking of raw and statically smoothed headings. For this rig the reference choice preserved the spacing result and changed the smoothing decision.
 
 [Paper (PDF)](manuscript.pdf) · [Editable text](manuscript.md) · [Methods and study files](study/README.md) · [Manuscript history](study/VERSION.md)
 
-[Author-owned software license](LICENSE) · [Third-party terms](LICENSING.md) · [Previous version](https://github.com/VEDANT1602/fixture-pose-correction/tree/a5046f018127523bc21f46db049c9a862fa82323)
+[Author-owned software license](LICENSE) · [Third-party terms](LICENSING.md) · [Previous version](https://github.com/VEDANT1602/fixture-pose-correction/tree/64e2d55e15131c088588c1c377115ac360749915)

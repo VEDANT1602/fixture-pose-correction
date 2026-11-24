@@ -10,3 +10,7 @@
 ## Limits of the physical benchmark
 
 These are positions recorded on a physical robot with repeated target observations. Encoder-referenced projection omits the test image, but it depends on camera-based registration from 56 training images. The seven calibration refits and withheld-row optical comparison quantify reference sensitivity; absolute angular bias remains unidentified. Neither a physical insertion task nor actual workstation cycle times are available in DS1. An alternative Wu et al. 224-image acquisition was screened. Its recorded translations duplicate two columns and a rotation-only fit was too inaccurate for a sub-degree reference, so this alternative does not enter the reported results. All paper findings can be regenerated from DS1 and the simulator.
+
+## Scope of independent angle records
+
+The public [MCalib benchmark](https://koonyook.github.io/MCalib/) includes a separate Qualisys 3D trajectory of a single passive marker. Its checkerboard has many visible points, but the independent trajectory is for the single-marker record. A single tracked point leaves its orientation undetermined. The [ASTRAS360 image archive](https://doi.org/10.17632/2gy2ky3yx8.1) supplies a rotary-stage encoder reading, but its image signal consists of a reflected light stripe. It supplies no physical pair of checkerboard endpoints at selectable spans. Neither record calibrates the absolute DS1 headings. The DS1 source investigators were asked whether an independent survey or tracker record exists for these poses.

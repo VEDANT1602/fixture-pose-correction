@@ -1,10 +1,5 @@
-# Licensing and third-party material
+# Software and data rights
 
-The root MIT license applies to the study software for which Vedant Thaker holds the rights and to its accompanying software documentation. Third-party code and data retain their applicable notices and terms. References to publications convey no license to their contents.
+The MIT license covers the original study software to the extent that Vedant Thaker holds the rights.
 
-The OpenCV chessboard photographs are available from the cited upstream sample-data commit. They are not distributed here. The board summaries and extracted corner coordinates are computational measurements. See the source and extraction information under revision/supplement/.
-
-
-## Current study files
-
-The root MIT license covers the author-owned software. Study-specific attributions, acquisition instructions and any additional terms on third-party data and derivative products accompany the files under [study](study/README.md). Original source articles, images, trained model weights and participant data remain subject to their respective providers’ terms.
+The camera images, robot poses and checkerboard geometry in DS1 come from Tabb and Ahmad Yousef. The source archive stays with [Ag Data Commons](https://doi.org/10.15482/USDA.ADC/1340592). The supplement contains derived error measurements and documents the exact upstream file and acquisition conditions in [the source record](study/SOURCES.md).
